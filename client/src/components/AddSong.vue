@@ -15,18 +15,17 @@
         <v-text-field multi-line label="Lyrics" :rules="[required]" required v-model="song.lyrics"></v-text-field>
         <v-text-field multi-line label="Tab" :rules="[required]" required v-model="song.tab"></v-text-field>
       </panel>
+      <div class="error" v-if="error">
+        {{error}}
+      </div>
       <v-btn class="cyan" @click="add" dark>add</v-btn>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
-import Panel from '@/components/Panel'
 import SongsService from '@/services/SongsService'
 export default {
-  components: {
-    Panel
-  },
   data () {
     return {
       song: {
